@@ -35,8 +35,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     adress = models.CharField(blank=True, max_length=255)
-    #lat = models.FloatField(blank=True, null=True, verbose_name="Latitude")
-    #lng = models.FloatField(blank=True, null=True, verbose_name="Longitude")
     location_point = locationModels.PointField(geography=True, null=True)
 
     def lat(self):
