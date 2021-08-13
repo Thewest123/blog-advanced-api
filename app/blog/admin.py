@@ -12,8 +12,9 @@ class TagAndCategoryAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['author', 'content']
-    ordering = ['creation_date']
+    list_display = ['blog_post', 'author', 'content', 'creation_date']
+    search_fields = ['blog_post', 'author', 'content']
+    date_hierarchy = 'creation_date'
 
 
 class BlogPostAdmin(admin.ModelAdmin):
@@ -24,7 +25,7 @@ class BlogPostAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_date'
     fieldsets = (
         (_('Blog post details'), {
-            'fields': ['title', 'slug', 'author', 'category', 'content']
+            'fields': ['title', 'slug', 'author', 'category', 'tags', 'content']
         }),
         (_('Miscellaneous'), {
             'fields': ['creation_date']
@@ -36,3 +37,6 @@ admin.site.register(models.Tag, TagAndCategoryAdmin)
 admin.site.register(models.Category, TagAndCategoryAdmin)
 admin.site.register(models.Comment, CommentAdmin)
 admin.site.register(models.BlogPost, BlogPostAdmin)
+
+# Display '(None)' insted of '-' for null values
+admin.site.empty_value_display = '(None)'
