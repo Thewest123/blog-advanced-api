@@ -20,13 +20,13 @@ services:
       - db
 
   db:
-    image: postgres:13-alpine
+    image: postgis/postgis:13-master
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -q -h db"]
       interval: 5s
       timeout: 5s
       retries: 5

@@ -8,6 +8,9 @@ ENV PYTHONUNBUFFERED 1
 # Install Postgres client
 RUN apk add --update --no-cache postgresql-client
 
+# Install Geospatial libraries for GeoDjango
+RUN apk add --update --no-cache proj geos gdal binutils
+
 # Install temporary build dependencies
 RUN apk add --update --no-cache --virtual .tmp-build-deps \
     gcc musl-dev libc-dev linux-headers postgresql-dev

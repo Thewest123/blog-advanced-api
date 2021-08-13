@@ -26,7 +26,7 @@ services:
     env_file:
       - ./.env.dev
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -q -h db"]
       interval: 5s
       timeout: 5s
       retries: 5
