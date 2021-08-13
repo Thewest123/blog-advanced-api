@@ -39,7 +39,11 @@ class BlogPost(models.Model):
 
 class Comment(models.Model):
 
-    blog_post = models.ForeignKey('BlogPost', on_delete=models.CASCADE)
+    blog_post = models.ForeignKey(
+        'BlogPost',
+        related_name='comments',
+        on_delete=models.CASCADE
+    )
 
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
