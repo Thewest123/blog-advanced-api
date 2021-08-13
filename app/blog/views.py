@@ -28,8 +28,6 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         else:
             return self.serializer_classes.get('default')
 
-        # return self.retrieve_serializer_class if self.action == 'retrieve' else self.default_serializer_class
-
     def get_queryset(self):
         """Filter the results based on query parameters"""
         queryset = self.queryset
@@ -69,7 +67,10 @@ class CommentViewSet(viewsets.GenericViewSet,
                      mixins.CreateModelMixin,
                      mixins.DestroyModelMixin,
                      ):
-    """ViewSet for the Comment model, only instance GET, POST and DELETE allowed"""
+    """
+    ViewSet for the Comment model,
+    only instance GET, POST and DELETE allowed
+    """
 
     queryset = Comment.objects.all()
     serializer_class = serializers.CommentSerializer

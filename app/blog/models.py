@@ -1,10 +1,10 @@
 from django.db import models
 from django.conf import settings
-from django.utils.translation import ugettext as _
 from django.utils import timezone
 
 
-# Default category for new Blog Posts, also gets assigned when the post's category is deleted
+# Default category for new Blog Posts, also gets
+# assigned when the post's category is deleted
 UNCATEGORIZED_CATEGORY_ID = 1
 
 
@@ -58,7 +58,10 @@ class Comment(models.Model):
 
     def __str__(self):
         """Returns author and up to 20 char preview of the comment content"""
-        return f'{self.author} || {self.content[:20]}{"..." if len(self.content) > 20 else ""}'
+        return (
+            f'{self.author} || {self.content[:20]}'
+            f'{"..." if len(self.content) > 20 else ""}'
+        )
 
 
 class Category(models.Model):

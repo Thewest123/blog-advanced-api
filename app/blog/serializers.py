@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.http import request
 from rest_framework import serializers
 from blog.models import BlogPost, Category, Tag, Comment
 
@@ -61,7 +60,10 @@ class BlogPostDetailSerializer(BlogPostSerializer):
         return obj.comments.count()
 
     def check_user_comment(self, obj) -> bool:
-        """Returns true if the currently authenticated user has a comment inside the blog post"""
+        """
+        Returns true if the currently authenticated user
+        has a comment inside the blog post
+        """
         request = self.context.get('request', None)
         return True if request.user == obj.author else False
 
