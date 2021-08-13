@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
                 ('author', models.ForeignKey(
                     on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('blog_post', models.ForeignKey(
-                    on_delete=django.db.models.deletion.CASCADE, to='blog.blogpost')),
+                    on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='blog.blogpost')),
             ],
         ),
         migrations.AddField(
