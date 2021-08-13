@@ -11,7 +11,7 @@ class TagAndCategoryAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['blog_post', 'author', 'content', 'creation_date']
+    list_display = ['content', 'author', 'blog_post', 'creation_date']
     search_fields = ['blog_post', 'author', 'content']
     date_hierarchy = 'creation_date'
 

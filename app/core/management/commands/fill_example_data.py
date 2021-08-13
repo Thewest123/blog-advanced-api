@@ -3,7 +3,7 @@ from django.core.management import call_command
 
 
 class Command(BaseCommand):
-    """Django command that waits for database to be available"""
+    """Django command that loads example data fixture to the database"""
 
     def handle(self, *args, **options):
         """Handle the command"""
