@@ -16,6 +16,12 @@ class CommentAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_date'
 
 
+class CommentInline(admin.TabularInline):
+    model = models.Comment
+    fk_name = 'blog_post'
+    extra = 0
+
+
 class BlogPostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['title']}
     search_fields = ['title', 'slug']
@@ -31,6 +37,7 @@ class BlogPostAdmin(admin.ModelAdmin):
             'fields': ['creation_date']
         }),
     )
+    inlines = [CommentInline]
 
 
 admin.site.register(models.Tag, TagAndCategoryAdmin)
