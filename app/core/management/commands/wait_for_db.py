@@ -12,12 +12,15 @@ class Command(BaseCommand):
         """Handle the command"""
         self.stdout.write('Waiting for database...')
         db_conn = None
+        wait_time = 1
         while not db_conn:
             try:
                 connection.ensure_connection()
                 db_conn = True
             except OperationalError:
-                self.stdout.write('Database unavailable, waiting 1 second...')
-                time.sleep(1)
+                self.stdout.write(
+                    f'Database unavailable, waiting {wait_time} second(s)...')
+                time.sleep(wait_time)
+                wait_time += 1
 
         self.stdout.write(self.style.SUCCESS('Database available!'))
