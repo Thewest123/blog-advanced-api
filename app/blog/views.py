@@ -31,13 +31,8 @@ class BlogPostViewSet(viewsets.ModelViewSet):
         # return self.retrieve_serializer_class if self.action == 'retrieve' else self.default_serializer_class
 
     def get_queryset(self):
-        """Filter the results based on query parameters and auth"""
+        """Filter the results based on query parameters"""
         queryset = self.queryset
-
-        # Hide BlogPosts that have is_for_logged_users_only=True
-        # if user is not authenticated
-        if not self.request.user.is_authenticated:
-            queryset = queryset.exclude(is_for_logged_users_only=True)
 
         # Get query params and filter the queryset
         author = self.request.query_params.get('author')
