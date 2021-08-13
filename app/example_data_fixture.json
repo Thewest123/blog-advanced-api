@@ -1,0 +1,128 @@
+[
+{
+  "model": "core.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$nXag6ie4Z2vRF4ppJ2kPHF$3zVeXW34AYhnLfebzsbJZCUi59LxvimoQoPJH2+Q6qA=",
+    "last_login": "2021-08-13T11:00:34.443Z",
+    "is_superuser": true,
+    "email": "admin@example.com",
+    "name": "Admin Uživatel",
+    "is_active": true,
+    "is_staff": true,
+    "adress": "",
+    "location_point": "SRID=4326;POINT (1.501463055401611 31.79666928771742)",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$U5o2TuouAmZuXB3Nz3nXPm$xooAZY4jEgAhf+2BSTTok/JzQkFFdAz1ZkOVzOKK/EU=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "user@example.com",
+    "name": "Basic Uživatel",
+    "is_active": true,
+    "is_staff": false,
+    "adress": "",
+    "location_point": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "blog.blogpost",
+  "pk": 1,
+  "fields": {
+    "title": "My first blog post!",
+    "slug": "my-first-blog-post",
+    "category": 2,
+    "author": 1,
+    "content": "Lorem ipsum dolor sit amet",
+    "creation_date": "2021-08-13T07:54:23Z",
+    "tags": [
+      1
+    ]
+  }
+},
+{
+  "model": "blog.blogpost",
+  "pk": 2,
+  "fields": {
+    "title": "My second blog post",
+    "slug": "my-second-blog-post",
+    "category": 1,
+    "author": 1,
+    "content": "lll",
+    "creation_date": "2021-08-13T08:46:02Z",
+    "tags": [
+      2
+    ]
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 1,
+  "fields": {
+    "blog_post": 1,
+    "author": 1,
+    "content": "This is a comment",
+    "creation_date": "2021-08-13T07:55:27Z"
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 2,
+  "fields": {
+    "blog_post": 1,
+    "author": 1,
+    "content": "Komentář z API",
+    "creation_date": "2021-08-13T08:30:26.038Z"
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 3,
+  "fields": {
+    "blog_post": 2,
+    "author": 2,
+    "content": "Lorem",
+    "creation_date": "2021-08-13T09:36:35.248Z"
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 1,
+  "fields": {
+    "name": "Uncategorized",
+    "slug": "uncategorized"
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 2,
+  "fields": {
+    "name": "Other",
+    "slug": "other"
+  }
+},
+{
+  "model": "blog.tag",
+  "pk": 1,
+  "fields": {
+    "name": "Tag 1",
+    "slug": "tag-1"
+  }
+},
+{
+  "model": "blog.tag",
+  "pk": 2,
+  "fields": {
+    "name": "Tag 2",
+    "slug": "tag-2"
+  }
+}
+]
