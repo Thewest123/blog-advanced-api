@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'rest_framework',
+    'rest_framework.authtoken',
     'core',
     'blog',
     'django_cleanup.apps.CleanupConfig',
@@ -135,3 +136,14 @@ AUTH_USER_MODEL = 'core.User'
 # Geospatial libraries for GeoDjango
 GDAL_LIBRARY_PATH = glob('/usr/lib/libgdal.so.*')[0]
 GEOS_LIBRARY_PATH = glob('/usr/lib/libgeos_c.so.*')[0]
+
+
+# Django Rest Framework configutation
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}

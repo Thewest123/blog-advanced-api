@@ -8,6 +8,7 @@ from django.urls.conf import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/blog/', include('blog.urls')),
+    path('api/user/', include('core.urls')),
 ]
 
 # Add static and media files if DEBUG, otherwise it's dealt with by nginx
