@@ -73,7 +73,18 @@ class CommentViewSet(viewsets.GenericViewSet,
     """
 
     queryset = Comment.objects.all()
-    serializer_class = serializers.CommentSerializer
+
+    serializer_classes = {
+        'default': serializers.CommentSerializer,
+        'create': serializers.CommentCreateSerializer,
+    }
+
+    def get_serializer_class(self):
+        """Set different serializer class for different actions"""
+        if self.action == 'create':
+            return self.serializer_classes.get('create')
+        else:
+            return self.serializer_classes.get('default')
 
 
 class UserViewSet(viewsets.ModelViewSet):

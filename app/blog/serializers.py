@@ -29,6 +29,17 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ['author', 'blog_post', 'content']
 
 
+class CommentCreateSerializer(CommentSerializer):
+    author = serializers.PrimaryKeyRelatedField(
+        many=False,
+        queryset=get_user_model().objects.all()
+    )
+
+    class Meta:
+        model = Comment
+        fields = ['author', 'blog_post', 'content']
+
+
 class BlogPostSerializer(serializers.ModelSerializer):
     """Default serializer for the BlogPost view, primary list action"""
 
