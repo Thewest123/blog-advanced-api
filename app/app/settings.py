@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'rest_framework',
     'core',
+    'blog',
     'django_cleanup.apps.CleanupConfig',
 ]
 
