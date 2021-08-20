@@ -3,15 +3,15 @@
   "model": "core.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$260000$nXag6ie4Z2vRF4ppJ2kPHF$3zVeXW34AYhnLfebzsbJZCUi59LxvimoQoPJH2+Q6qA=",
-    "last_login": "2021-08-13T11:00:34.443Z",
+    "password": "pbkdf2_sha256$260000$aBgJZeicX8uTpjT45klWtl$A6StCduHFZitHq3kY6B4jMe/f3nmAIwmrj61kh3VBFA=",
+    "last_login": "2021-08-20T09:59:41Z",
     "is_superuser": true,
     "email": "admin@example.com",
     "name": "Admin Uživatel",
     "is_active": true,
     "is_staff": true,
-    "adress": "",
-    "location_point": "SRID=4326;POINT (1.501463055401611 31.79666928771742)",
+    "address": "Forum, Pernerova 51, 186 00 Karlín, Česko",
+    "location_point": "SRID=4326;POINT (14.45431170000003 50.0917152)",
     "groups": [],
     "user_permissions": []
   }
@@ -20,15 +20,66 @@
   "model": "core.user",
   "pk": 2,
   "fields": {
-    "password": "pbkdf2_sha256$260000$U5o2TuouAmZuXB3Nz3nXPm$xooAZY4jEgAhf+2BSTTok/JzQkFFdAz1ZkOVzOKK/EU=",
+    "password": "pbkdf2_sha256$260000$vkah3LtPmeCLJkjC61H6av$CTX+ZmTqI5F3ntUle3wBK7cs8eGRKUhdFURx4PJhPJU=",
     "last_login": null,
     "is_superuser": false,
-    "email": "user@example.com",
-    "name": "Basic Uživatel",
+    "email": "user1@example.com",
+    "name": "Uživatel Jedna",
     "is_active": true,
     "is_staff": false,
-    "adress": "",
-    "location_point": null,
+    "address": "ZERO_RESULTS",
+    "location_point": "SRID=4326;POINT (0 0)",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$Fcc6VERiH4BmtYtfYp9idV$9FbvI3YMgthVOFMO21JOkoLvxzEYtCZqDQd5ieXExOU=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "user2@example.com",
+    "name": "Uživatel Dvě",
+    "is_active": true,
+    "is_staff": false,
+    "address": "44, Křižíkova 213, 186 00 Karlín, Česko",
+    "location_point": "SRID=4326;POINT (14.452983 50.0927421)",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$10v3pmMrflzgAS7SQYXR6D$hwOJpX93gIbVEoqPpIQK66s4lqvwz1ftyVw61SXTroc=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "user3@example.com",
+    "name": "Uživatel Daleko",
+    "is_active": true,
+    "is_staff": false,
+    "address": "Zličín, Česko",
+    "location_point": "SRID=4326;POINT (14.2944656 50.0596238)",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "core.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$RlkwicilZUXChBbiU8r89p$+/V2T13wuuOiCDiUOkF6CHxUQf0jAGYP5rNT6dlpuGM=",
+    "last_login": null,
+    "is_superuser": false,
+    "email": "user4@example.com",
+    "name": "Uživatel BezLokace",
+    "is_active": true,
+    "is_staff": false,
+    "address": "",
+    "location_point": "SRID=4326;POINT (0 0)",
     "groups": [],
     "user_permissions": []
   }
@@ -37,14 +88,16 @@
   "model": "blog.blogpost",
   "pk": 1,
   "fields": {
-    "title": "My first blog post!",
-    "slug": "my-first-blog-post",
-    "category": 2,
+    "title": "How to make full-stack Todo App",
+    "slug": "how-to-make-full-stack-todo-app",
+    "category": 3,
     "author": 1,
-    "content": "Lorem ipsum dolor sit amet",
-    "creation_date": "2021-08-13T07:54:23Z",
+    "content": "The todo list app we’ll build in this tutorial will be pretty basic. A user can add a task, mark a task as completed and delete an already added task. I’ll explain how to build each feature, but you must follow along by typing the code and running it on your end to get the most out of this tutorial.",
+    "creation_date": "2021-08-20T12:28:46Z",
     "tags": [
-      1
+      2,
+      4,
+      5
     ]
   }
 },
@@ -52,14 +105,14 @@
   "model": "blog.blogpost",
   "pk": 2,
   "fields": {
-    "title": "My second blog post",
-    "slug": "my-second-blog-post",
-    "category": 1,
-    "author": 1,
-    "content": "lll",
-    "creation_date": "2021-08-13T08:46:02Z",
+    "title": "Raspberry Pi and home automation",
+    "slug": "raspberry-pi-and-home-automation",
+    "category": 4,
+    "author": 3,
+    "content": "The Raspberry Pi is a utilitarian single-board computer (SBC) designed for a bevy of applications. With its small footprint and low power draw combined with beefy processing capabilities for its size, the Raspberry Pi is well-suited as an always-on device.",
+    "creation_date": "2021-08-20T12:36:54Z",
     "tags": [
-      2
+      1
     ]
   }
 },
@@ -68,9 +121,9 @@
   "pk": 1,
   "fields": {
     "blog_post": 1,
-    "author": 1,
-    "content": "This is a comment",
-    "creation_date": "2021-08-13T07:55:27Z"
+    "author": 2,
+    "content": "Thanks for the tutorial!",
+    "creation_date": "2021-08-20T12:29:42Z"
   }
 },
 {
@@ -78,9 +131,9 @@
   "pk": 2,
   "fields": {
     "blog_post": 1,
-    "author": 1,
-    "content": "Komentář z API",
-    "creation_date": "2021-08-13T08:30:26.038Z"
+    "author": 5,
+    "content": "plese help me my code not work :((\r\n\r\napp_1    |   File \"<frozen importlib._bootstrap>\", line 1006, in _gcd_import\r\napp_1    |   File \"<frozen importlib._bootstrap>\", line 967, in _find_and_load_unlocked\r\napp_1    |   File \"<frozen importlib._bootstrap>\", line 677, in _load_unlocked\r\napp_1    |   File \"<frozen importlib._bootstrap_external>\", line 724, in exec_module\r\napp_1    |   File \"<frozen importlib._bootstrap_external>\", line 860, in get_code\r\napp_1    |   File \"<frozen importlib._bootstrap_external>\", line 791, in source_to_code\r\napp_1    |   File \"<frozen importlib._bootstrap>\", line 219, in _call_with_frames_removed",
+    "creation_date": "2021-08-20T12:29:42Z"
   }
 },
 {
@@ -88,9 +141,19 @@
   "pk": 3,
   "fields": {
     "blog_post": 2,
-    "author": 2,
-    "content": "Lorem",
-    "creation_date": "2021-08-13T09:36:35.248Z"
+    "author": 3,
+    "content": "Don't forget to share this with your friends! :)",
+    "creation_date": "2021-08-20T12:36:54Z"
+  }
+},
+{
+  "model": "blog.comment",
+  "pk": 4,
+  "fields": {
+    "blog_post": 2,
+    "author": 1,
+    "content": "Noice",
+    "creation_date": "2021-08-20T12:36:54Z"
   }
 },
 {
@@ -105,24 +168,72 @@
   "model": "blog.category",
   "pk": 2,
   "fields": {
-    "name": "Other",
-    "slug": "other"
+    "name": "Picture",
+    "slug": "picture"
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 3,
+  "fields": {
+    "name": "Technology",
+    "slug": "technology"
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 4,
+  "fields": {
+    "name": "DIY",
+    "slug": "diy"
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 5,
+  "fields": {
+    "name": "Food",
+    "slug": "food"
   }
 },
 {
   "model": "blog.tag",
   "pk": 1,
   "fields": {
-    "name": "Tag 1",
-    "slug": "tag-1"
+    "name": "Short",
+    "slug": "short"
   }
 },
 {
   "model": "blog.tag",
   "pk": 2,
   "fields": {
-    "name": "Tag 2",
-    "slug": "tag-2"
+    "name": "Medium",
+    "slug": "medium"
+  }
+},
+{
+  "model": "blog.tag",
+  "pk": 3,
+  "fields": {
+    "name": "Long",
+    "slug": "long"
+  }
+},
+{
+  "model": "blog.tag",
+  "pk": 4,
+  "fields": {
+    "name": "Python",
+    "slug": "python"
+  }
+},
+{
+  "model": "blog.tag",
+  "pk": 5,
+  "fields": {
+    "name": "JavaScript",
+    "slug": "javascript"
   }
 }
 ]
