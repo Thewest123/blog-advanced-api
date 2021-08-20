@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.translation import ugettext as _
+from django.template.defaultfilters import truncatewords
 from blog import models
 
 
@@ -11,9 +12,12 @@ class TagAndCategoryAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['content', 'author', 'blog_post', 'creation_date']
+    list_display = ['short_content', 'author', 'blog_post', 'creation_date']
     search_fields = ['blog_post', 'author', 'content']
     date_hierarchy = 'creation_date'
+
+    def short_content(self, obj):
+        return truncatewords(obj.content, 15)
 
 
 class CommentInline(admin.TabularInline):
