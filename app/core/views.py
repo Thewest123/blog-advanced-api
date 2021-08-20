@@ -35,7 +35,10 @@ class UserLoginView(ObtainAuthToken):
 
 
 class UserLogoutView(APIView):
-    """Deletes the token for authenticated user"""
+    """
+    Deletes the token for authenticated user
+    after recieving any post request
+    """
 
     permission_classes = [permissions.IsAuthenticated]
 
