@@ -21,12 +21,22 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/blog/', include('blog.urls')),
     path('api/user/', include('core.urls')),
-    path('swagger<str:format>',
-         schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger',
-                                         cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc',
-                                       cache_timeout=0), name='schema-redoc'),
+
+    path(
+        'swagger<str:format>',
+        schema_view.without_ui(cache_timeout=0),
+        name='schema-json'
+    ),
+    path(
+        'swagger/',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='schema-swagger-ui'
+    ),
+    path(
+        'redoc/',
+        schema_view.with_ui('redoc', cache_timeout=0),
+        name='schema-redoc'
+    ),
 ]
 
 # Add static and media files if DEBUG, otherwise it's dealt with by nginx
