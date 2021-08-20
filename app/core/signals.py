@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from .models import User
@@ -17,11 +18,8 @@ def save_geolocation_from_address(sender, instance, **kwargs):
 
     else:
 
-        # If either lat or lng are empty
-        # and address is provided, make API call
-        if ((not instance.lat() or
-            not instance.lng()) and
-                instance.address):
+        # If the address has changed, get new geolocation
+        if instance.address != get_user_model().objects.get(id=instance.id).address:
 
             api_result = get_geolocation_from_address(instance.address)
 
