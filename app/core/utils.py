@@ -36,4 +36,9 @@ def get_geolocation_from_address(address: str) -> Dict[Point, str]:
             'address': address
         }
 
-    return Point(0, 0), 'Chyba'
+    # If error, returns default point (0, 0)
+    # and the error message as the address
+    return {
+        'point': Point(0, 0),
+        'address': r['status']
+    }
