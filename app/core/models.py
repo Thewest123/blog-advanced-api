@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
     PermissionsMixin
 from django.contrib.gis.db import models as locationModels
+from django.contrib.gis.geos import Point
 
 
 class UserManager(BaseUserManager):
@@ -29,13 +30,14 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """Custom user model, supports email instead of username"""
+    """Custom user model, supports email instead of username, geolocation"""
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(blank=True, max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    adress = models.CharField(blank=True, max_length=255)
-    location_point = locationModels.PointField(geography=True, null=True)
+    address = models.CharField(blank=True, max_length=255)
+    location_point = locationModels.PointField(
+        blank=True, null=False, geography=True, default=Point(0, 0))
 
     def lat(self):
         return self.location_point.y

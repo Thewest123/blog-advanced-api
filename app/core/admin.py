@@ -13,7 +13,7 @@ class UserAdmin(admin.OSMGeoAdmin, BaseUserAdmin):
         (_('Login Details'), {'fields': ('email', 'password')}),
         (_('Personal Info'), {'fields': ('name',)}),
         (_('Location'), {
-         'fields': ('adress', 'lat', 'lng', 'location_point')}),
+         'fields': ('address', 'lat', 'lng', 'location_point')}),
         (_('Permissions'), {
          'fields': ('is_active', 'is_staff', 'is_superuser')}),
         (_('Important dates'), {'fields': ('last_login',)}),
