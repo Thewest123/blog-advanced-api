@@ -19,7 +19,9 @@ def save_geolocation_from_address(sender, instance, **kwargs):
     else:
 
         # If the address has changed, get new geolocation
-        if instance.address != get_user_model().objects.get(id=instance.id).address:
+        if instance.address != get_user_model().objects.get(
+            id=instance.id
+        ).address:
 
             api_result = get_geolocation_from_address(instance.address)
 

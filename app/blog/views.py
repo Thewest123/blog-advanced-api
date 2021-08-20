@@ -1,8 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import Distance
 from rest_framework import viewsets, mixins
-from rest_framework.decorators import action
 
 from blog.models import BlogPost, Category, Tag, Comment
 from blog import serializers
