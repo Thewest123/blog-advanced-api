@@ -1,8 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import Distance
 from rest_framework import viewsets, mixins
+from rest_framework.decorators import action
 
 from blog.models import BlogPost, Category, Tag, Comment
 from blog import serializers
+from core.utils import get_geolocation_from_address
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
@@ -88,6 +92,22 @@ class CommentViewSet(viewsets.GenericViewSet,
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for the User model,
+    filter with query param ?near="address" to display
+    authors within 1km radius of the address
+    """
 
     queryset = get_user_model().objects.all()
     serializer_class = serializers.UserSerializer
+
+    def get_queryset(self):
+        queryset = get_user_model().objects.all()
+
+        address = self.request.query_params.get('near')
+        if address:
+            address_point = get_geolocation_from_address(address)['point']
+            queryset = queryset.filter(
+                location_point__distance_lte=(address_point, Distance(km=1)))
+
+        return queryset
