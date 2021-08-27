@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Program Files\kompose\kompose.exe convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Program Files\kompose\kompose.exe convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+      - args:
+        - sh
+        - -c
+        - |-
+          python manage.py wait_for_db &&
+                 python manage.py collectstatic --noinput &&
+                 python manage.py migrate --noinput &&
+                 gunicorn app.wsgi:application --bind 0.0.0.0:8000
+        env:
+        - name: DJANGO_ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_ALLOWED_HOSTS
+              name: env
+        - name: DJANGO_DEBUG
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_DEBUG
+              name: env
+        - name: DJANGO_SECRET_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: DJANGO_SECRET_KEY
+              name: env
+        - name: GOOGLE_GEOCODING_API_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: GOOGLE_GEOCODING_API_KEY
+              name: env
+        - name: GOOGLE_GEOCODING_API_LINK
+          valueFrom:
+            configMapKeyRef:
+              key: GOOGLE_GEOCODING_API_LINK
+              name: env
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_DB
+              name: env
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PASSWORD
+              name: env
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_USER
+              name: env
+        image: app
+        imagePullPolicy: ""
+        name: app
+        ports:
+        - containerPort: 8000
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

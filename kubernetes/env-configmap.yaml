@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  DJANGO_ALLOWED_HOSTS: django localhost
+  DJANGO_DEBUG: "0"
+  DJANGO_SECRET_KEY: dev-secret
+  GOOGLE_GEOCODING_API_KEY: ""
+  GOOGLE_GEOCODING_API_LINK: https://maps.googleapis.com/maps/api/geocode/json
+  POSTGRES_DB: app
+  POSTGRES_PASSWORD: admin
+  POSTGRES_USER: postgres
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: app-env
+  name: env
