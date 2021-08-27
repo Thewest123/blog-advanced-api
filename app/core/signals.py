@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.contrib.gis.geos import Point
-from functools import wraps
 from .models import User
 from .utils import get_geolocation_from_address
 
