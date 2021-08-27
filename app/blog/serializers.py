@@ -75,8 +75,9 @@ class BlogPostDetailSerializer(BlogPostSerializer):
         Returns true if the currently authenticated user
         has a comment inside the blog post
         """
+
         request = self.context.get('request', None)
-        return obj.comments.filter(author__exact=request.user).exists()
+        return obj.comments.filter(author__exact=request.user.id).exists()
 
     class Meta:
         model = BlogPost
