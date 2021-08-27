@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.contrib.gis.geos import Point
+from functools import wraps
 from .models import User
 from .utils import get_geolocation_from_address
 
@@ -12,6 +13,10 @@ def save_geolocation_from_address(sender, instance, **kwargs):
     Signal to be called before saving User instance,
     handles the geolocation API call
     """
+
+    # Disable this function when loading initial example data from fixture
+    if kwargs.get('raw', False):
+        return
 
     # If the address is empty, reset the location point and exit
     if not instance.address:
