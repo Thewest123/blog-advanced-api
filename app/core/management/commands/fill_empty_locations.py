@@ -21,8 +21,8 @@ class Command(BaseCommand):
             location_point__distance_lte=(Point(0, 0), Distance(mm=0)))
         for user in users:
 
-            # If user has address to geolocate
-            if user.address:
+            # If user has an address to geolocate
+            if user.address and not user.address.startswith('ERROR'):
                 api_call = get_geolocation_from_address(user.address)
 
                 user.location_point = api_call['point']
@@ -33,4 +33,4 @@ class Command(BaseCommand):
                       f'[{user.location_point.y}, {user.location_point.x}] ')
 
             else:
-                print(f'USER: {user} | NO new location!')
+                print(f'USER: {user} | Location NOT changed!')

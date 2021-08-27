@@ -19,8 +19,10 @@ def get_geolocation_from_address(address: str) -> Dict[Point, str]:
     }
 
     # Call API
-    response = requests.get(os.environ.get(
-        'GOOGLE_GEOCODING_API_LINK'), params=payload)
+    response = requests.get(
+        os.environ.get('GOOGLE_GEOCODING_API_LINK'),
+        params=payload
+    )
 
     # Parse response
     r = response.json()
@@ -40,5 +42,5 @@ def get_geolocation_from_address(address: str) -> Dict[Point, str]:
     # and the error message as the address
     return {
         'point': Point(0, 0),
-        'address': r['status']
+        'address': 'ERROR: ' + r['status']
     }

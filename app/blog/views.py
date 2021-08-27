@@ -108,4 +108,4 @@ class UserViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(
                 location_point__distance_lte=(address_point, Distance(km=1)))
 
-        return queryset
+        return queryset.order_by('-id')
